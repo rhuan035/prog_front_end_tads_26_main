@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Índice dos projetos desenvolvidos nos laboratórios de Programação Front-end — TADS 2026."
+    />
+    <title>Projetos | TADS 2026</title>
+    <style>
+      @font-face {
+        font-family: "Poppins";
+        src: url("tecboard/fonts/Poppins-Bold.ttf") format("truetype");
+        font-weight: 700;
+        font-display: swap;
+      }
+
+      @font-face {
+        font-family: "Roboto";
+        src: url("tecboard/fonts/Roboto-Bold.ttf") format("truetype");
+        font-weight: 400 900;
+        font-display: swap;
+      }
+
+      :root {
+        color-scheme: dark;
+        font-family: "Roboto", Arial, sans-serif;
+        background: #0e1014;
+        color: #fff;
+        font-synthesis: none;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        min-width: 320px;
+        min-height: 100vh;
+        margin: 0;
+        background:
+          radial-gradient(ellipse at 82% 18%, rgb(151 71 255 / 13%), transparent 34rem),
+          #0e1014;
+      }
+
+      .page-shell {
+        width: min(1120px, calc(100% - 48px));
+        margin: 0 auto;
+      }
+
+      .site-header {
+        display: flex;
+        align-items: center;
+        min-height: 112px;
+        border-bottom: 1px solid rgb(255 255 255 / 10%);
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        color: #fff;
+        font-family: "Poppins", sans-serif;
+        font-size: 19px;
+        letter-spacing: -0.04em;
+        text-decoration: none;
+      }
+
+      .brand img {
+        width: 36px;
+        height: 36px;
+        object-fit: contain;
+      }
+
+      main {
+        padding: 88px 0 96px;
+      }
+
+      .intro {
+        max-width: 720px;
+        margin-bottom: 48px;
+      }
+
+      .eyebrow,
+      .project-number {
+        color: #b98aff;
+        font-size: 0.8rem;
+        font-weight: 700;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+
+      h1,
+      h2,
+      p {
+        margin-top: 0;
+      }
+
+      h1 {
+        margin-bottom: 18px;
+        font-family: "Poppins", sans-serif;
+        font-size: clamp(2.5rem, 6vw, 4.5rem);
+        line-height: 1.08;
+        letter-spacing: -0.055em;
+      }
+
+      h1 span {
+        color: #9747ff;
+      }
+
+      .intro p {
+        max-width: 610px;
+        margin-bottom: 0;
+        color: #b8bac5;
+        font-size: 1.1rem;
+        line-height: 1.7;
+      }
+
+      .projects-heading {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 16px;
+        margin-bottom: 18px;
+      }
+
+      .projects-heading h2 {
+        margin-bottom: 0;
+        font-family: "Poppins", sans-serif;
+        font-size: 1.45rem;
+      }
+
+      .project-count {
+        color: #9294a0;
+        font-size: 0.9rem;
+      }
+
+      .project-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+        gap: 22px;
+        padding: 0;
+        margin: 0;
+        list-style: none;
+      }
+
+      .project-card {
+        overflow: hidden;
+        border: 1px solid rgb(255 255 255 / 10%);
+        border-radius: 20px;
+        background: #17191f;
+        transition: border-color 180ms ease, transform 180ms ease;
+      }
+
+      .project-card:hover {
+        transform: translateY(-4px);
+        border-color: rgb(151 71 255 / 70%);
+      }
+
+      .project-image {
+        display: block;
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        object-fit: cover;
+        background: #08090c;
+      }
+
+      .project-content {
+        padding: 24px;
+      }
+
+      .project-number {
+        margin-bottom: 10px;
+      }
+
+      .project-content h3 {
+        margin: 0 0 10px;
+        font-family: "Poppins", sans-serif;
+        font-size: 1.35rem;
+      }
+
+      .project-content p {
+        min-height: 3.2em;
+        margin-bottom: 22px;
+        color: #b8bac5;
+        line-height: 1.6;
+      }
+
+      .project-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        color: #c9a7ff;
+        font-weight: 700;
+        text-decoration: none;
+      }
+
+      .project-link:hover {
+        color: #fff;
+      }
+
+      .project-link:focus-visible,
+      .brand:focus-visible {
+        outline: 3px solid #c9a7ff;
+        outline-offset: 5px;
+        border-radius: 4px;
+      }
+
+      .site-footer {
+        padding: 22px 0 32px;
+        border-top: 1px solid rgb(255 255 255 / 10%);
+        color: #9294a0;
+        font-size: 0.9rem;
+      }
+
+      .site-footer p {
+        margin: 0;
+      }
+
+      @media (max-width: 600px) {
+        .page-shell {
+          width: min(100% - 32px, 1120px);
+        }
+
+        .site-header {
+          min-height: 82px;
+        }
+
+        main {
+          padding: 58px 0 68px;
+        }
+
+        .intro {
+          margin-bottom: 36px;
+        }
+
+        .intro p {
+          font-size: 1rem;
+        }
+
+        .project-content p {
+          min-height: 0;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          scroll-behavior: auto !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="site-header">
+        <a class="brand" href="./" aria-label="Página inicial dos projetos TADS 2026">
+          <img src="tecboard/img/logo-tecboard-branco.png" alt="" />
+          <span>PROJETOS TADS</span>
+        </a>
+      </header>
+
+      <main>
+        <section class="intro" aria-labelledby="page-title">
+          <p class="eyebrow">Programação Front-end · TADS 2026</p>
+          <h1 id="page-title">Ideias que viram <span>projetos.</span></h1>
+          <p>
+            Explore os projetos desenvolvidos nos laboratórios da disciplina.
+            Acesse cada pasta para conhecer e testar o resultado.
+          </p>
+        </section>
+
+        <section aria-labelledby="projects-title">
+          <div class="projects-heading">
+            <h2 id="projects-title">Projetos</h2>
+            <span class="project-count">01 projeto</span>
+          </div>
+
+          <ul class="project-list">
+            <li class="project-card">
+              <a href="tecboard/index.html" aria-label="Abrir o projeto Tecboard">
+                <img
+                  class="project-image"
+                  src="tecboard/img/celulares-sobrespostos-desktop.png"
+                  alt="Dois celulares exibindo a interface do Tecboard, sobre um brilho roxo."
+                />
+              </a>
+              <div class="project-content">
+                <p class="project-number">Projeto 01</p>
+                <h3>Tecboard</h3>
+                <p>
+                  Página de apresentação de uma plataforma de monitoramento,
+                  com alertas inteligentes para aplicações.
+                </p>
+                <a class="project-link" href="tecboard/index.html">
+                  Acessar projeto <span aria-hidden="true">→</span>
+                </a>
+              </div>
+            </li>
+
+            <!--
+              Para adicionar um próximo projeto, duplique um item .project-card,
+              atualize o título, a descrição, a imagem e os links para a pasta
+              do projeto (por exemplo: href="nome-da-pasta/index.html").
+            -->
+          </ul>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <p>Laboratórios de Programação Front-end · TADS 2026</p>
+      </footer>
+    </div>
+  </body>
+</html>
